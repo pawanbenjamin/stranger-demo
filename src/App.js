@@ -1,18 +1,18 @@
-import React from 'react';
-
+import React from 'react'
+import { useEffect, useState } from 'react'
+import SignUp from './components/SignUp'
 function App() {
+  const [token, setToken] = useState('')
+
+  useEffect(() => {
+    console.log(token)
+  }, [token])
+
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SignUp setToken={setToken} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

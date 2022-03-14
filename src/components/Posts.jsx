@@ -7,7 +7,6 @@ const Posts = () => {
   useEffect(() => {
     const getPosts = async () => {
       const result = await fetchPosts()
-      console.log(result)
       const newPosts = result.data.posts
       setPosts(newPosts)
     }

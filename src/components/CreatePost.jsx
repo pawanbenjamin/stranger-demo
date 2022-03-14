@@ -19,26 +19,31 @@ const CreatePost = ({ token }) => {
 
   return (
     <div>
+      <h4>Create a Post:</h4>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          placeholder="title"
         />
         <input
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          placeholder="description"
         />
         <input
           type="text"
           value={location}
           onChange={(e) => setLocation(e.target.value)}
+          placeholder="location"
         />
         <input
           type="number"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          placeholder="price"
         />
         <label>Will Deliver?</label>
         <input

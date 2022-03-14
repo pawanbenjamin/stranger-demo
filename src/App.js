@@ -7,7 +7,10 @@ function App() {
   const [token, setToken] = useState('')
 
   useEffect(() => {
-    console.log('Current Token in State: ', token)
+    const localStorageToken = localStorage.getItem('token')
+    if (localStorageToken !== '') {
+      setToken(localStorageToken)
+    }
   }, [token])
 
   return (

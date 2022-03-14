@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { fetchPosts } from '../api/index'
-const Posts = () => {
+import SinglePost from './SinglePost'
+
+const Posts = ({ token }) => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
@@ -16,7 +18,15 @@ const Posts = () => {
   return (
     <div>
       {posts.map((post, i) => {
-        return <h1 key={i}>{post.title}</h1>
+        return (
+          <SinglePost
+            key={i}
+            post={post}
+            token={token}
+            posts={posts}
+            setPosts={setPosts}
+          />
+        )
       })}
     </div>
   )

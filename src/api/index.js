@@ -51,3 +51,21 @@ export const createPost = async (postDetails, token) => {
   const data = await response.json()
   return data
 }
+
+export const updatePost = async (updateObj, token, postId) => {
+  const response = await fetch(
+    `https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts/${postId}`,
+    {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        post: updateObj,
+      }),
+    }
+  )
+  const data = await response.json()
+  return data
+}

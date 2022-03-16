@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useEffect } from 'react'
 import { createPost } from '../api'
+
 const CreatePost = ({ token }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')

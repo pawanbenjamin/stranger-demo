@@ -8,11 +8,11 @@ const SinglePost = ({ token, post, posts, setPosts }) => {
     e.preventDefault()
     const { data } = await updatePost({ title: postTitle }, token, postId)
     console.log(data.post)
-    // filter through our old posts
-    // remove the post with the current post's ID
-    // make a new posts array, and include data.posts in it with the spread operator
-    // const newArray = [...filteredPosts, newPost]
-    // setPosts(newArray)
+    const filteredPosts = posts.filter((post) => {
+      return post._id !== data.post._id
+    })
+    const newArray = [...filteredPosts, data.post]
+    setPosts(newArray)
   }
 
   return (

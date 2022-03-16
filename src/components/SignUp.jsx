@@ -11,9 +11,7 @@ const SignUp = ({ setToken }) => {
       <form
         onSubmit={async (e) => {
           e.preventDefault()
-
           const result = await registerUser(username, password)
-
           localStorage.setItem('token', result.data.token)
           setToken(result.data.token)
         }}

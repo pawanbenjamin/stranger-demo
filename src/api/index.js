@@ -14,6 +14,7 @@ export const registerUser = async (username, password) => {
       }),
     }
   )
+
   const data = await response.json()
 
   return data
@@ -64,6 +65,35 @@ export const updatePost = async (updateObj, token, postId) => {
       body: JSON.stringify({
         post: updateObj,
       }),
+    }
+  )
+  const data = await response.json()
+  return data
+}
+
+export const deletePost = async (token, postId) => {
+  const response = await fetch(
+    `https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/posts/${postId}`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+  const data = await response.json()
+  return data
+}
+
+export const fetchMe = async (token) => {
+  const response = await fetch(
+    'https://strangers-things.herokuapp.com/api/2202-FTB-ET-WEB-FT/users/me',
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
     }
   )
   const data = await response.json()

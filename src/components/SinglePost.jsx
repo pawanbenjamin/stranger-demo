@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { updatePost } from '../api'
+import { deletePost, updatePost } from '../api'
 
-const SinglePost = ({ token, post, posts, setPosts }) => {
+const SinglePost = ({ token, post, posts, setPosts, userObj }) => {
   const [postTitle, setPostTitle] = useState('')
 
   const handleSubmit = async (e, postId) => {
@@ -15,9 +15,19 @@ const SinglePost = ({ token, post, posts, setPosts }) => {
     setPosts(newArray)
   }
 
-  return (
-    <div>
-      <h2>{post.title}</h2>
+  const handleDelete = async (token, postId) => {
+    const data = await deletePost(token, postId)
+    const filteredPosts = posts.filter((post) => {
+      return post._id !== postId
+    })
+    setPosts(filteredPosts)
+  }
+
+  console.log('User Obj in Single Post', userObj)
+  console.log('Post', post)
+
+  const editInfo = (
+    <>
       <form
         onSubmit={(e) => {
           handleSubmit(e, post._id)
@@ -31,6 +41,14 @@ const SinglePost = ({ token, post, posts, setPosts }) => {
         />
         <button type="submit">Update Title!</button>
       </form>
+      <button onClick={() => handleDelete(token, post._id)}>Delete Post</button>
+    </>
+  )
+
+  return (
+    <div>
+      <h2>{post.title}</h2>
+      {post.author.username === userObj.username ? editInfo : null}
     </div>
   )
 }

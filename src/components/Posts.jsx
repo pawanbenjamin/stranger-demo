@@ -4,7 +4,7 @@ import { fetchPosts } from '../api/index'
 import SinglePost from './SinglePost'
 import CreatePost from './CreatePost'
 
-const Posts = ({ token }) => {
+const Posts = ({ token, userObj }) => {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const Posts = ({ token }) => {
             token={token}
             posts={posts}
             setPosts={setPosts}
+            userObj={userObj}
           />
         )
       })}

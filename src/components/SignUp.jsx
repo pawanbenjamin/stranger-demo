@@ -8,6 +8,7 @@ const SignUp = ({ setToken }) => {
 
   return (
     <div>
+      <h2>Sign up!</h2>
       <form
         onSubmit={async (e) => {
           e.preventDefault()

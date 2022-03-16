@@ -1,8 +1,9 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import CreatePost from './components/CreatePost'
+
 import Posts from './components/Posts'
 import SignUp from './components/SignUp'
+
 function App() {
   const [token, setToken] = useState('')
 

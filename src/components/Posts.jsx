@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { fetchPosts } from '../api/index'
 import SinglePost from './SinglePost'
+import CreatePost from './CreatePost'
 
 const Posts = ({ token }) => {
   const [posts, setPosts] = useState([])
@@ -17,6 +18,7 @@ const Posts = ({ token }) => {
 
   return (
     <div>
+      <CreatePost posts={posts} setPosts={setPosts} token={token} />
       {posts.map((post, i) => {
         return (
           <SinglePost

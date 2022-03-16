@@ -8,7 +8,7 @@ function App() {
 
   useEffect(() => {
     const localStorageToken = localStorage.getItem('token')
-    if (localStorageToken !== '') {
+    if (localStorageToken) {
       setToken(localStorageToken)
     }
   }, [token])
@@ -17,7 +17,6 @@ function App() {
     <div>
       <SignUp setToken={setToken} />
       <Posts token={token} />
-      <CreatePost />
     </div>
   )
 }

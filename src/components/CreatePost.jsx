@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { createPost } from '../api'
 
-const CreatePost = ({ token }) => {
+const CreatePost = ({ token, posts, setPosts }) => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [location, setLocation] = useState('')
@@ -12,9 +12,10 @@ const CreatePost = ({ token }) => {
     e.preventDefault()
     const postDetailsObj = { title, description, location, price, willDeliver }
     console.log(postDetailsObj)
-    const token = localStorage.getItem('token')
     const response = await createPost(postDetailsObj, token)
-    console.log(response)
+    console.log(response.data.post)
+    const newPosts = [response.data.post, ...posts]
+    setPosts(newPosts)
   }
 
   return (

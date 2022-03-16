@@ -17,12 +17,13 @@ const SinglePost = ({ token, post, posts, setPosts }) => {
 
   return (
     <div>
-      <h1>{post.title}</h1>
+      <h2>{post.title}</h2>
       <form
         onSubmit={(e) => {
           handleSubmit(e, post._id)
         }}
       >
+        <h3>Update Post Form:</h3>
         <input
           placeholder="title"
           value={postTitle}

@@ -1,8 +1,10 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
 import { registerUser } from '../api'
 
 const SignUp = ({ setToken }) => {
+  const history = useHistory()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
 
@@ -15,6 +17,7 @@ const SignUp = ({ setToken }) => {
           const result = await registerUser(username, password)
           localStorage.setItem('token', result.data.token)
           setToken(result.data.token)
+          history.push('/posts')
         }}
       >
         <input

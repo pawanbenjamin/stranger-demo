@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { Route } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import { fetchMe } from './api'
 
 import Posts from './components/Posts'
@@ -25,8 +27,14 @@ function App() {
 
   return (
     <div>
-      <SignUp setToken={setToken} />
-      <Posts token={token} userObj={userObj} />
+      <Switch>
+        <Route path="/posts">
+          <Posts token={token} userObj={userObj} />
+        </Route>
+        <Route path="/signup">
+          <SignUp setToken={setToken} />
+        </Route>
+      </Switch>
     </div>
   )
 }
